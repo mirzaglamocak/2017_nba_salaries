@@ -1,0 +1,18 @@
+select 
+	  ss.player,
+    ss.year as 'Season',
+    ss.g as 'Games Played',
+    round((ss.pts/ss.g),2) as 'Points Per Game',
+    round((ss.trb/ss.g),2) as 'Rebounds Per Game',
+    round((ss.ast/ss.g),2) as 'Assists Per Game',
+    nba.season17_18 as 'Salary' 
+from 
+	  Seasons_Stats as ss
+left join 
+	  NBA_season1718_salary as nba 
+on 
+  	ss.player = nba.player 
+where 
+  	year = 2017
+order by 
+  	Salary desc 
